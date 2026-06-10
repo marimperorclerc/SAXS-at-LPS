@@ -3,6 +3,7 @@
 * how to calibrate SWING data using GC sample
 
 ### SASView models with template notebooks
+TO RUN notebooks, please install first a .venv environnement as explained in installation-venv-SASView.ipynb
 * sphere model
 * core-shell sphere model
 * cylinder model
