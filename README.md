@@ -2,10 +2,17 @@
 * documents about normalisation using glassy Carbon sample (GC)
 * how to calibrate SWING data using GC sample
 
-### fit 1D
-* contains template notebook and data for different SASView models
-* use `cylinder-1D-template-notebook.ipynb` to fit 1D data with cylinder model
-* use `Sphere-1D-notebook.ipynb` to fit 1D data with sphere model
-* folder `data-examples` contains some recent data files for nanorods
+### SASView models with template notebooks
+TO RUN notebooks, please install first a python .venv environnement as explained in installation-venv-SASView.ipynb
+* sphere model
+* core-shell sphere model
+* cylinder model
+* prism model
+* truncated-tetrahedron model
+* truncated-octahedron model
+
+### data-examples folder contain different SAXS data sets
+* one folder for one data set
+* TO DO: rationalise infos inside the folders ...
 
 
