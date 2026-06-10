@@ -3,7 +3,7 @@
 * how to calibrate SWING data using GC sample
 
 ### SASView models with template notebooks
-TO RUN notebooks, please install first a .venv environnement as explained in installation-venv-SASView.ipynb
+TO RUN notebooks, please install first a python .venv environnement as explained in installation-venv-SASView.ipynb
 * sphere model
 * core-shell sphere model
 * cylinder model
@@ -11,7 +11,7 @@ TO RUN notebooks, please install first a .venv environnement as explained in ins
 * truncated-tetrahedron model
 * truncated-octahedron model
 
-### data-examples contain different SAXS data sets
+### data-examples folder contain different SAXS data sets
 * one folder for one data set
 * TO DO: rationalise infos inside the folders ...
 
