@@ -10,7 +10,8 @@
 * truncated-tetrahedron model
 * truncated-octahedron model
 
-### data-examples contain different data sets
-* TO DO: rationalise infos inside the data sets ...
+### data-examples contain different SAXS data sets
+* one folder for one data set
+* TO DO: rationalise infos inside the folders ...
 
 
