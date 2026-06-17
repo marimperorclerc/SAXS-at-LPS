@@ -1,9 +1,11 @@
-long rods: 32eeAg
-short rods: 8eqAg
+long rods: 32eqAg seed is a gold bipyramid
+short rods: 8eqAg seed is a gold bipyramid
+
+UV-blue light:
 cycling 7: long rods + 3 mM CTAC + 8azotab
 cycling 8: long rods + 5 mM CTAC + 8azotab
 cycling 9: short rods + 50 mM CTAC + 8azotab
 
-cycling 7: FF plus tiny Bragg peaks + Pord
+cycling 7: FF plus tiny Bragg peaks + Porod
 cycling 8: strong Bragg peaks plus some extra peak
 cycling 7: FF alone, then Bragg peaks. Porod will not work, need to replace it by a Form Factor of the assembly.
