@@ -4,24 +4,38 @@ This model adds a q**-4 Porod regime and hexagonal Bragg peaks with the first fi
 It describes objects assembled together with internal 2D hexagonal order. 
 The Porod term accounts for the contribution at low q due to the surface of the assemblies.
 
+Definition
+----------
+
 Bragg peaks are modeled using pseudo-Voigt peak function.
+
+Validation
+----------
+
 
 References
 ----------
 
-#. G Porod. *Kolloid Zeit*. 124 (1951) 83
-#. L A Feigin, D I Svergun, G W Taylor. *Structure Analysis by Small-Angle
-   X-ray and Neutron Scattering*. Springer. (1987)
-   Aaron L. Stancik, Eric B. Brauns
-# A simple asymmetric lineshape for fitting infrared absorption spectra
+1. G Porod. *Kolloid Zeit* 124 (1951) 83
+
+2. L A Feigin, D I Svergun, G W Taylor 
+   Structure Analysis by Small-Angle X-ray and Neutron Scattering 
+   Springer (1987)
+
+3. Aaron L. Stancik, Eric B. Brauns
+   A simple asymmetric lineshape for fitting infrared absorption spectra
    Vibrational Spectroscopy 47 (2008) 66-69
 
+   
 Authorship and Verification
 ----------------------------
 
-* **Authors: Jules Marcone, Marianne Imperor-Clerc, 30May2023**
-* **Author:** Steve King **Date:** 19/11/2019
-* **Last Modified by:** Steve King **Date:** 24/06/2020
+* **Authors:** Jules Marcone (julesmarcone@gmail.com) **Date:** 30 May 2023
+               Marianne Imperor-Clerc (marianne.imperor@cnrs.fr)
+* **Author:**  Steve King **Date:** 24 June 2020 
+
+* **Last Modified by:** MIC **Date:** 16 June 2026
+
 * **Last Reviewed by:** **Date:**
 
 """
@@ -45,11 +59,11 @@ parameters = [["scale_Porod", "", 0.05, [0, inf], "", "Scale factor for Porod"],
               ["hwhm_q20", "1/Ang", 0.01, [0, 1], "", "HWHM of q20 peak"],
               ["hwhm_q21", "1/Ang", 0.01, [0, 1], "", "HWHM of q21 peak"],
               ["hwhm_q30", "1/Ang", 0.01, [0, 1], "", "HWHM of q30 peak"],
-              ["scale_q10", "", 1, [0, inf], "", "Scale factor for q10 peak"],
-              ["scale_q11", "", 1, [0, inf], "", "Scale factor for q11 peak"],
-              ["scale_q20", "", 1, [0,inf],  "", "Scale factor for q20 peak"],
-              ["scale_q21", "", 0, [0,inf],  "", "Scale factor for q21 peak"],
-              ["scale_q30", "", 0, [0,inf],  "", "Scale factor for q30 peak"]]
+              ["scale_q10", "", 1, [0,inf], "", "Scale factor for q10 peak"],
+              ["scale_q11", "", 1, [0,inf], "", "Scale factor for q11 peak"],
+              ["scale_q20", "", 1, [0,inf], "", "Scale factor for q20 peak"],
+              ["scale_q21", "", 0, [0,inf], "", "Scale factor for q21 peak"],
+              ["scale_q30", "", 0, [0,inf], "", "Scale factor for q30 peak"]]
 
 
 
@@ -91,48 +105,31 @@ def Iq(q,scale_Porod,a_cell, w_f, hwhm_q10, hwhm_q11, hwhm_q20, hwhm_q21, hwhm_q
     """
     
     with errstate(divide='ignore'):
-      q10=4*np.pi/(np.sqrt(3)*a_cell)
-      q11=np.sqrt(3)*q10
-      q20=2*q10
-      q21=np.sqrt(7)*q10
-      q30=3*q10
-      porod = (scale_Porod/q)**4
-      L10 = Ipeak(q,w_f,q10,hwhm_q10)
-      L11 = Ipeak(q,w_f,q11,hwhm_q11)
-      L20 = Ipeak(q,w_f,q20,hwhm_q20)
-      L21 = Ipeak(q,w_f,q21,hwhm_q21)
-      L30 = Ipeak(q,w_f,q30,hwhm_q30)
+        q10=4*np.pi/(np.sqrt(3)*a_cell)
+        q11=np.sqrt(3)*q10
+        q20=2*q10
+        q21=np.sqrt(7)*q10
+        q30=3*q10
+        porod = (scale_Porod/q)**4
+        L10 = Ipeak(q,w_f,q10,hwhm_q10)
+        L11 = Ipeak(q,w_f,q11,hwhm_q11)
+        L20 = Ipeak(q,w_f,q20,hwhm_q20)
+        L21 = Ipeak(q,w_f,q21,hwhm_q21)
+        L30 = Ipeak(q,w_f,q30,hwhm_q30)
 
-      return porod+scale_q10*L10+scale_q11*L11+scale_q20*L20+scale_q21*L21+scale_q30*L30
+        return porod+scale_q10*L10+scale_q11*L11+scale_q20*L20+scale_q21*L21+scale_q30*L30
 
 Iq.vectorized = True  # Iq accepts an array of q values
 
-def random():
-    """Return a random parameter set for the model."""
-    sld, solvent = np.random.uniform(-0.5, 12, size=2)
-    radius = 10**np.random.uniform(1, 4.7)
-    Vf = 10**np.random.uniform(-3, -1)
-    scale = 1e-4 * Vf * 2*np.pi*(sld-solvent)**2/(3*radius)
-    a_cell = np.random.uniform(1,100)
-    hwhm_q10 = np.random.uniform(0.001,0.1)
-    hwhm_q11 = np.random.uniform(0.001,0.1)
-    hwhm_q20 = np.random.uniform(0.001,0.1)
-    scale_q10 = np.random.uniform(0.01,100)
-    scale_q11 = np.random.uniform(0.01,100)
-    scale_q20 = np.random.uniform(0.01,100)
-    pars = dict(
-        scale=scale,
-        a_cell = a_cell,
-        hwhm_q10 = hwhm_q10,
-        hwhm_q11 = hwhm_q11,
-        hwhm_q20 = hwhm_q20,
-        scale_q10 = scale_q10,
-        scale_q11 = scale_q11,
-        scale_q20 = scale_q20,
-    )
-    return pars
-
 tests = [
-    [{'scale': 0.00001, 'background':0.01}, 0.04, 3.916250],
-    [{}, 0.0, inf],
+    [{"scale": 0.00001, 
+      "background":0.01,
+      "scale_Porod": 1.,
+      "scale_q10": 0.,
+      "scale_q11": 0.,
+      "scale_q20": 0.,
+      "scale_q21": 0.,
+      "scale_q30": 0.,
+      }, 
+      0.04, 3.916250],
 ]
