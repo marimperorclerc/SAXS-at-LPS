@@ -52,7 +52,7 @@ description = """\
 category = "shape-independent"
 
 parameters = [["scale_Porod", "", 0.05, [0, inf], "", "Scale factor for Porod"],
-              ["a_cell", "Ang", 40, [20, 200], "", "hexagonal cell parameter"],
+              ["a_cell", "Ang", 900, [10, 10000], "", "hexagonal cell parameter"],
               ["w_f", "", 0.8, [0, 1], "", "lorentzian/gaussian weighting factor"],
               ["hwhm_q10", "1/Ang", 0.01, [0, 1], "", "HWHM of q10 peak"],
               ["hwhm_q11", "1/Ang", 0.01, [0, 1], "", "HWHM of q11 peak"],
