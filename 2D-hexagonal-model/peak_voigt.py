@@ -73,11 +73,10 @@ def Ipeak(q, wf, q0, hwhm):
     half-maximum) for the Lorentzian and $sigma$=HWHM/1.17741, where $sigma$ is the standard deviation
     of the Gaussian. In other words, the widths of the Lorentzian and the
     Gaussian have been coupled for convenience of parameterisation.
-    
-    1.17741=np.sqrt(2*np.ln(2))
+
     """
-    #cste=np.sqrt(2*np.ln(2))
-    cste=1.17741
+    cste=np.sqrt(2*np.ln(2))
+    #cste=1.17741
     sigma=hwhm/cste
     intensity = (wf*(1/(1+((q-q0)**2.0/hwhm**2.0))))+((1.0-wf)*np.exp((-0.5*(q-q0)**2.0)/(sigma**2.0)))
     return intensity
