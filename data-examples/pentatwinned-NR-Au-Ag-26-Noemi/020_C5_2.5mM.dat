@@ -1,4 +1,50 @@
-                               
+#####################################################################################################
+# NeXus source file: 020_100mM
+# NXdata: name = img{0}_azimuthalIntegration_Px_314                
+#
+#
+# Exposure_msec                                     1000.0 + 0.0
+# _diffrn_source.source                             Storage Ring SOLEIL, beamline SWING
+# _diffrn_sofware                                   Foxtrot 3.5.10-3979
+# _diffrn_detector.detector                         EIGER-4M
+# _diffrn_comment.comment                           15
+# _sas_detc.pixnum_ax                               [1035]
+# _sas_detc.pixnum_eq                               [1083]
+# _sas_detc.pixsize                                 150.0
+# _sas_detc.center_ax                               288.1755905205494
+# _sas_detc.center_eq                               956.9347235815438
+# _sas_detc.dist_spec/detc                          6144.32372053
+# _sas_detc.energy                                  12.00046066252769
+# _sas_detc.gain                                    1.0
+# _sas_detc.detector_based_uncertainty              0.0
+# _sas_detc.encoder_delta                           0.0
+# _sas_detc.delta0                                  0.0
+# _sas_detc.gamma_offset                            0.0
+# _sas_detc.wave_length                             1.03316188591951
+# _sas_detc.bias                                    0
+# _sas_detc.mask                                    C:\Soleil data\\mask_trazo_6m_april26.txt
+# Normalization                                     true
+# Normalization Factor                              1.0
+# Normalization Monitor                             averagemi8b
+# Normalization Intensity                           7.162817236328363e-07
+# GlobalNormalization                               0.4268921908273369
+# AbsTimeStamps                                     nan
+# TimeStamps                                        1.3931939601898193
+# gapTime                                           2000.0
+# step_global_regrid                                nan
+# xmax_global_regrid                                nan
+# xmin_global_regrid                                nan
+# ymax_global_regrid                                nan
+# ymin_global_regrid                                nan
+#####################################################################################################
+q(A-1)                             I(q)5_00440{00000}_AzInt_Px_314    Sig(q)5_00440{00000}_AzInt_Px_314  
+0.0                                nan                                nan                                
+0.0001484665654979606              nan                                nan                                
+0.000296933130796833               nan                                nan                                
+0.00044539969569752896             nan                                nan                                
+0.0005938662600009603              nan                                nan                                
+0.0007423328235080391              nan                                nan                                
+0.0008907993860196767              nan                                nan                                           
 0.0010392659473367853              4154622.7492585243                 1844.6023571506114                 
 0.0011877325072602765              3906826.9408937497                 799.9522228884662                  
 0.001336199065591062               3593341.7837951016                 475.7891736445708                  
