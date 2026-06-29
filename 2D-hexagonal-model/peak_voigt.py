@@ -20,13 +20,12 @@ Validation
 References
 ----------
 
-1. G Porod. *Kolloid Zeit* 124 (1951) 83
 
-2. L A Feigin, D I Svergun, G W Taylor 
+1. L A Feigin, D I Svergun, G W Taylor 
    Structure Analysis by Small-Angle X-ray and Neutron Scattering 
    Springer (1987)
 
-3. Aaron L. Stancik, Eric B. Brauns
+2. Aaron L. Stancik, Eric B. Brauns
    A simple asymmetric lineshape for fitting infrared absorption spectra
    Vibrational Spectroscopy 47 (2008) 66-69
 
@@ -34,10 +33,10 @@ References
 Authorship and Verification
 ----------------------------
 
-* **Authors:** Jules Marcone (julesmarcone@gmail.com) **Date:** 30 May 2023
-               Marianne Imperor-Clerc (marianne.imperor@cnrs.fr)
-               Anirban Mandal (mandalanirban2023@gmail.com)
 * **Author:**  Steve King **Date:** 24 June 2020 
+
+* **Authors:** Marianne Imperor-Clerc (marianne.imperor@cnrs.fr)
+               Anirban Mandal (mandalanirban2023@gmail.com)
 
 * **Last Modified by:** MIC **Date:** 16 June 2026
 
@@ -58,9 +57,7 @@ category = "shape-independent"
 
 parameters = [["w_f", "", 0.8, [0, 1], "", "lorentzian/gaussian weighting factor"],
               ["peak_pos", "1/Ang", 0.05, [0, inf], "", "Position of the peak"],
-              ["hwhm_peak", "1/Ang", 0.01, [0, 1], "", "HWHM of the peak"],
-              ["scale_peak", "", 1, [0,inf], "", "Scale factor for the peak"]]
-
+              ["hwhm_peak", "1/Ang", 0.01, [0, 1], "", "HWHM of the peak"]]
 
 
 def Ipeak(q, wf, q0, hwhm):
@@ -73,7 +70,6 @@ def Ipeak(q, wf, q0, hwhm):
     of the Gaussian. In other words, the widths of the Lorentzian and the
     Gaussian have been coupled for convenience of parameterisation.
     
-    1.17741=np.sqrt(2*np.log(2))
     """
     cste=np.sqrt(2*np.log(2))
     #cste=1.17741
@@ -82,19 +78,18 @@ def Ipeak(q, wf, q0, hwhm):
     return intensity
 
 
-def Iq(q, w_f, peak_pos, hwhm_peak, scale_peak):
+def Iq(q, w_f, peak_pos, hwhm_peak):
     """
     w_f: weighting coefficient in the pseudo Voigt peak function 
     $w_f=1$ for Lorentzian and $w_f=0$ for Gaussian peak.
     peak_pos: position of the peak
     hwhm_peak: HWHM of the peak
-    scale_peak: Scale factor for the peak
     """
     
     with errstate(divide='ignore'):
         L = Ipeak(q, w_f, peak_pos, hwhm_peak)
 
-        return scale_peak*L
+        return L
 
 Iq.vectorized = True  # Iq accepts an array of q values
 
@@ -102,8 +97,7 @@ tests = [
     [{"scale": 1.0,
       "background": 0.0,
       "peak_pos": 0.05,
-      "hwhm_peak": 0.01,
-      "scale_peak": 1.0,
+      "hwhm_peak": 0.01
       },
       0.05, 1.0],
 ]
