@@ -1,17 +1,49 @@
 r"""
-This model describes a single pseudo-Voigt Bragg/form-factor peak.
-
-It is a stripped-down, lattice-free model containing only one peak whose position is a
-free parameter. It is intended to be summed with other models, so no Porod regime is
-included here (the Porod q**-4 contribution is expected to come from the model it is
-summed with). A typical use is to account for a small peak at low q (e.g. arising from
-a form factor) that is not otherwise modelled.
+This model describes a pseudo-Voigt shaped peak on a flat background.
 
 Definition
 ----------
 
-The peak is modeled using a pseudo-Voigt peak function. The peak position ``peak_pos``
-is an independent fit parameter and is not tied to any unit cell.
+This pseudo-Voigt peak function is a weighted linear summation of
+Lorentzian (L) and Gaussian (G) peak shapes. The usefulness of this
+function is that it produces a peak shape with asymmetry.
+ 
+The scattering intensity $I(q)$ is calculated as
+
+.. math::
+
+    I(q) = scale . [{W_f.I(q)_L} + {(1-W_f).I(q)_G}] + background
+	
+where $W_f$ is a weighting factor and
+
+.. math::
+
+    I(q)_L = frac{1}{igl(1+igl(frac{q-q_0}{HWHM}igr)^2igr)}
+
+
+    I(q)_G = expleft[ -frac12 (q-q_0)^2 / sigma^2 
+ight]
+
+The peak is taken to be centered at $q_0$ with a HWHM (half-width
+half-maximum) of 1.17741 $sigma$, where $sigma$ is the standard deviation
+of the Gaussian. In other words, the widths of the Lorentzian and the
+Gaussian have been coupled for convenience of parameterisation.
+
+.. math::
+    sigma = HWHM/sqrt(2*np.log(2))
+    sqrt(2*np.log(2)) = 1.17741
+   
+When $W_f$ = 1 a Lorentzian peak is returned, and when $W_f$ = 0 a
+Gaussian peak is returned.
+
+For 2D data the scattering intensity is calculated in the same way as 1D,
+where the $q$ vector is defined as
+
+.. math::
+
+    q = sqrt{q_x^2 + q_y^2}
+
+
 
 Validation
 ----------
