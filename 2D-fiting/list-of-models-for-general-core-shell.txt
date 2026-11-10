@@ -1,0 +1,26 @@
+## List of models with centro symmetric shapes 
+## and Iqabc(qa,qb,qc) already implemented.
+
+Computation of the amplitude Fqabc(qa,qb,qc) is the squareroot of the intensity:
+
+Fqabc(qa,qb,qc)=sqrt(Iqabc(qa,qb,qc))
+
+### superball model: 
+* gives a sphere with p=1 
+* gives a cube with p=infinity
+
+### triaxial ellipsoid model:
+* gives a sphere for Ra=Rb=Rc (radius_equat_minor=Major equatorial radius=Polar radius)
+
+### elliptical cylinder model:
+* gives a cylinder (circular cross-section) with axis_ratio=1 
+
+### rectangular_prism:
+* gives a cube with b2a_ratio=c2a_ratio=1
+
+### parallelepiped:
+* gives a cube with length_a=length_b=length_c
+
+### truncated_octahedron:
+* gives a regular octahedron with b2a_ratio=c2a_ratio=1
+* gives a regular cuboctahedron with b2a_ratio=c2a_ratio=1 and t=0.5
